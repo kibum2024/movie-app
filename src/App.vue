@@ -1,17 +1,19 @@
 <template>
   <div class="app-wrap">
-    <div class="test"></div>
     <MovieHeader />
+    <MovieFooter />
   </div>
 </template>
 
 <script>
 import MovieHeader from '@/components/header/MovieHeader.vue';
+import MovieFooter from '@/components/footer/MovieFooter.vue';
 
 export default {
   name: 'App',
   components: {
-    MovieHeader
+    MovieHeader,
+    MovieFooter
   }
 }
 </script>

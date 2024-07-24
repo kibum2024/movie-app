@@ -1,5 +1,8 @@
 <template>
-  <MovieHeader />
+  <div class="app-wrap">
+    <div class="test"></div>
+    <MovieHeader />
+  </div>
 </template>
 
 <script>
@@ -22,5 +25,11 @@ export default {
   color: #2c3e50;
   margin: 0;
   padding: 0;
+}
+.app-wrap {
+  width: 100vw;
+}
+li {
+  list-style: none;
 }
 </style>

@@ -24,5 +24,7 @@ export default {
     background-color: #eee;
     height: 80px;
 }
-  
+.header-top-banner> img {
+    cursor: pointer;
+}
 </style>

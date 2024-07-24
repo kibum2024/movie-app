@@ -1,12 +1,18 @@
 <template>
   <div>
-    
+    <TopBanner />
+    <h1>head part</h1>
   </div>
 </template>
 
 <script>
+import TopBanner from './TopBanner.vue';
+
 export default {
-  name: '',
+  name: 'MovieHeader',
+  components: {
+    TopBanner
+  },
   data() {
     return {
       
@@ -15,6 +21,7 @@ export default {
   methods: {
     
   }
+  
 };
 </script>
 

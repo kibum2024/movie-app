@@ -1,6 +1,6 @@
 <template>
-  <div>
-      <img alt="Vue logo" src="./assets/image/banner/logo.png">
+  <div class="header-top-banner">
+      <img src="@/assets/image/banner/top_banner.jpg" alt="Top banner" >
   </div>
 </template>
 
@@ -19,5 +19,10 @@ export default {
 </script>
 
 <style scoped>
+.header-top-banner {
+    width: 100%;
+    background-color: #eee;
+    height: 80px;
+}
   
 </style>

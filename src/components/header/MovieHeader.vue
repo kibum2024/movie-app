@@ -1,6 +1,7 @@
 <template>
-  <div>
+  <div class="header-wrap">
     <TopBanner />
+    <MainMenu />
     <MainSlide />
     <h1>head part</h1>
   </div>
@@ -15,12 +16,14 @@
 
 <script>
 import TopBanner from './TopBanner.vue';
+import MainMenu from './MainMenu.vue';
 import MainSlide from './MainSlide.vue';
 
 export default {
   name: 'MovieHeader',
   components: {
     TopBanner,
+    MainMenu,
     MainSlide
   },
   data() {
@@ -36,5 +39,8 @@ export default {
 </script>
 
 <style>
+.header-wrap {
+  position: relative;
+}
   
 </style>

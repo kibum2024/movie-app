@@ -34,4 +34,8 @@ export default {
 li {
   list-style: none;
 }
+a {
+  text-decoration: none;
+  color: #aaa;
+}
 </style>

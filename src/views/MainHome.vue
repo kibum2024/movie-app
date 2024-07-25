@@ -1,12 +1,18 @@
 <template>
   <div>
-    <h1>HOME</h1>
+    <MainSlide />
   </div>
 </template>
 
 <script>
+import MainSlide from '@/views/MainSlide.vue';
+
 export default {
-  name: 'Home',
+  name: 'MainHome',
+  components: {
+    MainSlide
+  },
+
   data() {
     return {
       

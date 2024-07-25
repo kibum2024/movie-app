@@ -1,7 +1,14 @@
 <template>
   <div class="app-wrap">
-    <MovieHeader />
-    <MovieFooter />
+    <header>
+      <MovieHeader />
+    </header>
+    <main>
+      <router-view></router-view>
+    </main>
+    <footer>
+      <MovieFooter />
+    </footer>
   </div>
 </template>
 

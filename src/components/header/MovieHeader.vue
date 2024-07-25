@@ -2,29 +2,18 @@
   <div class="header-wrap">
     <TopBanner />
     <MainMenu />
-    <MainSlide />
-    <h1>head part</h1>
   </div>
-  <nav>
-      <ul>
-        <li><router-link to="/">Home</router-link></li>
-        <li><router-link to="/about">About</router-link></li>
-        <li><router-link to="/contact">Contact</router-link></li>
-      </ul>
-  </nav>
 </template>
 
 <script>
-import TopBanner from './TopBanner.vue';
-import MainMenu from './MainMenu.vue';
-import MainSlide from './MainSlide.vue';
+import TopBanner from '@/components/header/TopBanner.vue';
+import MainMenu from '@/components/header/MainMenu.vue';
 
 export default {
   name: 'MovieHeader',
   components: {
     TopBanner,
-    MainMenu,
-    MainSlide
+    MainMenu
   },
   data() {
     return {

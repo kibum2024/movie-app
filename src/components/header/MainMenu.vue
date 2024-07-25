@@ -10,7 +10,7 @@
         <div class="main-logo-wrap">
           <div class="main-logo"><img :src="mainLog" alt="main Log">LOTTE CINEMA</div>
         </div>
-        <ul class="main-menu2">
+        <ul class="main-menu2"> 
             <li><router-link to="/">멤버십</router-link></li>
             <li><router-link to="/">고객센터</router-link></li>
             <li><router-link to="/">단체관람/대관문의</router-link></li>
@@ -20,11 +20,21 @@
     </div>
     <div class="main-menu-bottom">
       <ul class="main-dropdown-menu">
-        <li class="main-sub-menu" @mouseover="showSubMenu('menu1')" @mouseleave="hideSubMenu"><router-link to="/">예매</router-link></li>
-        <li class="main-sub-menu" @mouseover="showSubMenu('menu2')" @mouseleave="hideSubMenu"><router-link to="/">영화</router-link></li>
-        <li class="main-sub-menu" @mouseover="showSubMenu('menu3')" @mouseleave="hideSubMenu"><router-link to="/">영화관</router-link></li>
-        <li class="main-sub-menu" @mouseover="showSubMenu('menu4')" @mouseleave="hideSubMenu"><router-link to="/">이벤트</router-link></li>
-        <li class="main-sub-menu" @mouseover="showSubMenu('menu5')" @mouseleave="hideSubMenu"><router-link to="/">스토어</router-link></li>
+        <li class="main-sub-menu" @mouseover="showSubMenu('reservationMenu')" @mouseleave="mouseleaveMenu">
+          <router-link to="/reservationHome" @click="mainMenuClick('reservationHome')">예매</router-link>
+        </li>
+        <li class="main-sub-menu" @mouseover="showSubMenu('MovieMenu')" @mouseleave="mouseleaveMenu">
+          <router-link to="/MovieHome" @click="mainMenuClick('MovieHome')">영화</router-link>
+        </li>
+        <li class="main-sub-menu" @mouseover="showSubMenu('cinemaMenu')" @mouseleave="mouseleaveMenu">
+          <router-link to="/cinemaHome" @click="mainMenuClick('cinemaHome')">영화관</router-link>
+        </li>
+        <li class="main-sub-menu" @mouseover="showSubMenu('eventMenu')" @mouseleave="mouseleaveMenu">
+          <router-link to="/eventHome" @click="mainMenuClick('eventHome')">이벤트</router-link>
+        </li>
+        <li class="main-sub-menu" @mouseover="showSubMenu('storeMenu')" @mouseleave="mouseleaveMenu">
+          <router-link to="/storeHome" @click="mainMenuClick('storeHome')">스토어</router-link>
+        </li>
       </ul>
       <ul class="main-menu3">
         <li><router-link to="/">회원가입</router-link></li>
@@ -33,7 +43,7 @@
       </ul>
     </div>  
   </div>
-    <div v-if="activeMenu" class="main-submenu">
+    <div v-if="activeMenu" class="main-submenu" @mouseover="keepSubMenu" @mouseleave="hideSubMenu">
       <ul class="main-submenu-ul">
         <li v-for="(submenu, index) in getActiveMenuItems" :key="index" @click="submenuClick(submenu)">{{ submenu }}</li>
       </ul>
@@ -51,7 +61,8 @@ export default {
     return {
       mainLog,
       activeMenu: null,
-      menuData
+      menuData,
+      selectedSubmenu: null,
     };
   },
   computed: {
@@ -67,10 +78,23 @@ export default {
     hideSubMenu() {
       this.activeMenu = null;
     },
-  submenuClick(submenu) {
-    this.selectedSubmenu = submenu;
-    // 여기에 추가로 클릭된 서브메뉴 항목에 대한 처리 로직을 추가합니다.
-    // 예를 들어, 다른 페이지로 이동하거나 관련 작업을 수행할 수 있습니다.
+    keepSubMenu() {
+      // 이 메서드는 서브메뉴가 유지되도록 빈 상태로 두거나 필요하면 로직을 추가
+    },
+    submenuClick(submenu) {
+      this.selectedSubmenu = submenu;
+      // 여기에 추가로 클릭된 서브메뉴 항목에 대한 처리 로직을 추가합니다.
+      // 예를 들어, 다른 페이지로 이동하거나 관련 작업을 수행할 수 있습니다.
+    },
+    mouseleaveMenu() {
+      // 이 메서드는 서브메뉴가 사라지지 않도록 빈 상태로 두거나 필요하면 로직을 추가
+    },
+    setActiveContent(menu) {
+      this.activeContent = menu; // 클릭한 메뉴의 컨텐츠를 설정
+    },
+    mainMenuClick(menu) {
+      console.log("menu :", menu);
+      this.activeMenu = menu;
     }
   },
 };
@@ -84,7 +108,7 @@ export default {
   top: 80px;
   left: 25%;
   margin: 0 auto;
-  z-index: 200;
+  z-index: 10;
 }
 .main-menu-top {
   width: 100%;
@@ -219,15 +243,16 @@ export default {
   width: 100%; /* 상위 메뉴 항목의 너비를 기준으로 설정 */
   height: 30px;
   line-height: 30px;
-  top: 21.2%; /* 메뉴 항목 바로 아래에 서브메뉴 위치 */
+  top: 242%; /* 메뉴 항목 바로 아래에 서브메뉴 위치 */
   left: 0;
-  z-index: 10; /* 다른 요소들 위에 표시되도록 설정 */
+  z-index: 20; /* 다른 요소들 위에 표시되도록 설정 */
   box-sizing: border-box; /* 패딩과 테두리를 포함하여 계산 */
   background-color: black;
 }
 .main-submenu-ul {
   display: flex;
   justify-content: center;
+  list-style: none;
   margin: 0;
   padding: 0;
 }

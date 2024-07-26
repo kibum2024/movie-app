@@ -8,7 +8,7 @@
             <li><i class="bi bi-instagram"></i><a href="https://www.instagram.com/lottecinema_official/" target="_blank" title="롯데시네마 인스타그램 새창열림">인스타그램</a></li>
         </ul>
         <div class="main-logo-wrap">
-          <div class="main-logo"><img :src="mainLog" alt="main Log">LOTTE CINEMA</div>
+          <router-link to="/" @click="mainMenuClick('mainhome')"><div class="main-logo" :style="logColorObject"><img :src="mainLog" alt="main Log">LOTTE CINEMA</div></router-link>
         </div>
         <ul class="main-menu2"> 
             <li><router-link to="/">멤버십</router-link></li>
@@ -45,7 +45,9 @@
   </div>
     <div v-if="activeMenu" class="main-submenu" @mouseover="keepSubMenu" @mouseleave="hideSubMenu">
       <ul class="main-submenu-ul">
-        <li v-for="(submenu, index) in getActiveMenuItems" :key="index" @click="submenuClick(submenu)">{{ submenu }}</li>
+        <li v-for="(submenu, index) in getActiveMenuItems" :key="index">
+          <router-link :to="getSubmenuRoute(submenu)" @click.stop="submenuClick(submenu)">{{ submenu.menuName }}</router-link>
+        </li>
       </ul>
     </div>
 
@@ -63,12 +65,18 @@ export default {
       activeMenu: null,
       menuData,
       selectedSubmenu: null,
+      logColor: '1'
     };
   },
   computed: {
     getActiveMenuItems() {
       // menuData가 존재하고 activeMenu가 올바르게 설정된 경우 서브메뉴 항목 반환
       return this.menuData && this.menuData[this.activeMenu] ? this.menuData[this.activeMenu] : [];
+    },
+    logColorObject() {
+      return {
+        color: this.logColor === '1' ? 'white' : 'red'
+      };
     }
   },
   methods: {
@@ -93,8 +101,16 @@ export default {
       this.activeContent = menu; // 클릭한 메뉴의 컨텐츠를 설정
     },
     mainMenuClick(menu) {
-      console.log("menu :", menu);
       this.activeMenu = menu;
+      if (menu === 'mainhome') {
+        this.logColor = '1';
+      }
+      else {
+        this.logColor = '2';
+      }  
+    },
+    getSubmenuRoute(submenu) {
+      return `${submenu.menuRouter}`;
     }
   },
 };
@@ -128,9 +144,10 @@ export default {
   line-height: 70px;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .main-logo {
-  color: white;
+  /* color: white; */
   font-size: 30px;
   font-weight: bold;
 }
@@ -248,6 +265,7 @@ export default {
   z-index: 20; /* 다른 요소들 위에 표시되도록 설정 */
   box-sizing: border-box; /* 패딩과 테두리를 포함하여 계산 */
   background-color: black;
+  cursor: pointer;
 }
 .main-submenu-ul {
   display: flex;

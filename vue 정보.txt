@@ -263,3 +263,143 @@ my-spa-project/
 └── vue.config.js
 
 =======================================================
+visual studio tab 값 설정
+
+옵션 열기:
+
+상단 메뉴에서 File (파일) > Preferences (환경설정) > Settings (설정)을 클릭합니다. 또는, Ctrl + , 단축키를 사용해도 됩니다.
+텍스트 편집기 설정 찾기:
+
+검색 창에 Tab 또는 Indentation을 입력하여 관련 설정을 빠르게 찾습니다.
+Text Editor (텍스트 편집기) 아래의 특정 언어를 선택합니다. 예를 들어, C#의 경우 C# > Tabs 또는 Indentation을 선택합니다.
+탭 및 스페이스 설정 변경:
+
+Tab size를 2로 설정하고, Indent size도 2로 설정합니다.
+Insert spaces 옵션을 선택하여 탭 대신 스페이스를 사용하도록 합니다.
+
+롯데시네마 freecomboy@paran.com 나라2468!
+
+
+==============================================================
+
+
+ALTER TABLE MOVIEDATA
+CHANGE MOVIESNO MOVIE_NO INT;
+
+ALTER USER 'firewind'@'%' IDENTIFIED WITH mysql_native_password BY 'qkfka'
+
+commit
+
+FLUSH PRIVILEGES;
+
+SHOW DATABASES;
+
+use testdb
+
+update itemdata set DISCOUNTRATE = 0
+where DISCOUNTRATE is null 
+
+
+CREATE TABLE MOVIEDATA (
+  movieNo INT PRIMARY key,
+  openGUbun VARCHAR(1),
+  actGubun VARCHAR(1),
+  movieImgName VARCHAR(30),
+  movieImg VARCHAR(50),
+  seeMovieCount INT,
+  wantMovieCount INT,
+  reservationCount INT,
+  movieTitle VARCHAR(150),
+  ageLimited VARCHAR(3),
+  showTime VARCHAR(10),
+  openDate VARCHAR(10),
+  genre VARCHAR(100),
+  movieDirector VARCHAR(100),
+  productionCountry VARCHAR(30)
+);
+
+CREATE TABLE PLACEDATA (
+  menuNO VARCHAR(4),
+  placeNO VARCHAR(2),
+  placeName VARCHAR(100),
+  menuRouter VARCHAR(150),
+  PRIMARY KEY (menuNO, placeNo)
+);
+
+CREATE TABLE PLACE_MOVIE (
+  menuNO VARCHAR(4),
+  placeNO VARCHAR(2),
+  movieNo int,
+  openGUbun VARCHAR(1),
+  actGubun VARCHAR(1),
+  movieImgName VARCHAR(30),
+  seeMovieCount INT,
+  wantMovieCount INT,
+  reservationCount INT,
+  movieTitle VARCHAR(150),
+  ageLimited VARCHAR(3),
+  showTime VARCHAR(10),
+  openDate VARCHAR(10),
+  placeMovieOpen VARCHAR(1),
+  movieRouter VARCHAR(150),
+  PRIMARY KEY (menuNO, placeNo, movieNo)
+);
+
+insert into PLACE_MOVIE 
+select a.menuNO, A.placeNO, B.movieNo, b.openGUbun, b.actGubun, b.movieImgName, 
+	b.seeMovieCount, b.wantMovieCount, b.reservationCount, b.movieTitle,
+	b.ageLimited, b.showTime, b.openDate, '1' as placeMovieOpen, A.menuRouter  
+from PLACEDATA A, MOVIEDATA B
+order by a.menuNO, A.placeNO, B.movieNo
+
+CREATE TABLE MOVIE_SHOWTIME (
+  menuNo VARCHAR(4),
+  placeNo VARCHAR(2),
+  movieNo int,
+  showDay VARCHAR(8),
+  showRoom VARCHAR(20),
+  showTime VARCHAR(5),
+  movieTitle VARCHAR(150),
+  ageLimited VARCHAR(3),
+  capacityCount INT,
+  reservationCount INT,
+  showGubun VARCHAR(10),
+  linesGubun VARCHAR(10),
+  showRoomGubun VARCHAR(3),
+  PRIMARY KEY (menuNO, placeNo, movieNo, showDay, showRoom, showTime)
+);
+
+drop table MOVIE_SHOWTIME
+
+commit;
+
+show tables;
+
+
+insert into MOVIE_SHOWTIME 
+select menuNo, placeNo, movieNo, "20240728" as showDay, "1관" as showRoom, "12:10" as showTime, movieTitle, ageLimited, 170 as capacityCount, 10 as reservationCount, "2D" as showGubun, "더빙" as linesGubun, "001" as showRoomGubun from PLACE_MOVIE;
+
+insert into MOVIE_SHOWTIME
+select menuNo, placeNo, movieNo, "20240728" as showDay, "1관" as showRoom, "15:40" as showTime, movieTitle, ageLimited, 170 as capacityCount, 10 as reservationCount, "2D" as showGubun, "더빙" as linesGubun, "001" as showRoomGubun from PLACE_MOVIE;
+
+insert into MOVIE_SHOWTIME
+select menuNo, placeNo, movieNo, "20240729" as showDay, "1관" as showRoom, "12:10" as showTime, movieTitle, ageLimited, 170 as capacityCount, 10 as reservationCount, "2D" as showGubun, "더빙" as linesGubun, "001" as showRoomGubun from PLACE_MOVIE;
+
+insert into MOVIE_SHOWTIME
+select menuNo, placeNo, movieNo, "20240730" as showDay, "1관" as showRoom, "15:40" as showTime, movieTitle, ageLimited, 170 as capacityCount, 10 as reservationCount, "2D" as showGubun, "더빙" as linesGubun, "001" as showRoomGubun from PLACE_MOVIE;
+
+select * from MOVIE_SHOWTIME
+
+select * from PLACE_MOVIE
+
+select * from moviedata m 
+
+
+ALTER TABLE PLACE_MOVIE CHANGE menuNO menuNo VARCHAR(4);
+
+ALTER TABLE PLACE_MOVIE CHANGE placeNO placeNo VARCHAR(2);
+
+
+
+
+

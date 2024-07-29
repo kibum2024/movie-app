@@ -1,135 +1,88 @@
 <template>
-  <div>
-    <h1>{{ theaterName }} 좌석 예약</h1>
-    <div class="seat-map">
+  <div class="seat-layout">
+    <div v-for="row in seatData.rows" :key="row.row_number" class="row-seat">
+      <div class="row-number">
+        <span v-if="row.row_number === 'TR'"></span>
+        <span v-else>{{ row.row_number }}</span>
+      </div>
       <div
-        v-for="(row, rowIndex) in seats"
-        :key="rowIndex"
-        class="seat-row"
+        v-for="seat in row.seats"
+        :key="seat.seat_number"
+        :class="[seat.type, { reserved: seat.reserved === 'true' }]"
       >
-        <div
-          v-for="(seat, seatIndex) in row"
-          :key="seatIndex"
-          :class="['seat', { reserved: seat.reserved, selected: selectedSeats.includes(seat.id), aisle: isAisle(rowIndex, seatIndex) }]"
-          @click="toggleSeat(seat.id)"
-          v-if="!isNoSeat(rowIndex, seatIndex)"
-        >
-          {{ seat.number }}
-        </div>
+        {{ seat.seat_number }}
       </div>
     </div>
-    <button @click="reserveSeats" :disabled="selectedSeats.length === 0">예약하기</button>
-    <div v-if="message">{{ message }}</div>
   </div>
 </template>
 
 <script>
-import theaters from '@/assets/data/seat.json'; // JSON 파일 import
+import seatData1 from '@/assets/data/seat_data2'; 
 
 export default {
-  name: 'reservationPage3',
+  name: 'reservationPage4',
   data() {
     return {
-      // 좌석 정보와 선택된 좌석 관리
-      seats: [],
-      selectedSeats: [],
-      message: '',
-      theaterId: this.$route.params.theaterId, // URL 파라미터로 극장 ID 받기
-      aisles: [], // 통로 정보
-      noSeats: [] // 좌석이 없는 공간 정보
+      seatData: seatData1
     };
-  },
-  computed: {
-    theaterName() {
-      const theater = theaters.find(t => t.id === Number(this.theaterId));
-      return theater ? theater.name : '';
-    },
-  },
-  created() {
-    const theater = theaters.find(t => t.id === Number(this.theaterId));
-    if (theater) {
-      this.seats = this.chunkSeats(theater.seats, 10); // 좌석 데이터를 10개씩 묶기
-      this.aisles = theater.aisles; // 통로 정보 설정
-      this.noSeats = theater.noSeats; // 좌석이 없는 공간 정보 설정
-    }
-  },
-  methods: {
-    chunkSeats(seats, chunkSize) {
-      const result = [];
-      for (let i = 0; i < seats.length; i += chunkSize) {
-        result.push(seats.slice(i, i + chunkSize));
-      }
-      return result;
-    },
-    toggleSeat(seatId) {
-      const seat = this.seats.flat().find(s => s.id === seatId);
-      if (seat.reserved) {
-        alert('이 좌석은 예약되어 있습니다.');
-        return;
-      }
-      if (this.selectedSeats.includes(seatId)) {
-        this.selectedSeats = this.selectedSeats.filter(id => id !== seatId);
-      } else {
-        this.selectedSeats.push(seatId);
-      }
-    },
-    reserveSeats() {
-      this.selectedSeats.forEach(seatId => {
-        const seat = this.seats.flat().find(s => s.id === seatId);
-        if (seat) {
-          seat.reserved = true; // 좌석 예약 처리
-        }
-      });
-      this.message = `${this.selectedSeats.length} 좌석이 예약되었습니다: ${this.selectedSeats.join(', ')}`;
-      this.selectedSeats = []; // 예약 후 선택 초기화
-    },
-    isAisle(rowIndex, seatIndex) {
-      return this.aisles.some(aisle => aisle.row === rowIndex && aisle.position === seatIndex);
-    },
-    isNoSeat(rowIndex, seatIndex) {
-      return this.noSeats.some(noSeat => 
-        noSeat.row === rowIndex && seatIndex >= noSeat.start && seatIndex <= noSeat.end
-      );
-    },
-  },
+  }
 };
 </script>
 
-<style>
-.seat-map {
+<style scoped>
+.seat-layout {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-.seat-row {
+.row-seat {
   display: flex;
 }
-
+.row-number {
+  margin-right: 10px;
+  width: 21px;
+  height: 16px;
+  line-height: 16px;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+}
 .seat {
-  width: 30px;
-  height: 30px;
-  margin: 5px;
-  background-color: lightgreen;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  width: 21px;
+  height: 16px;
+  line-height: 16px;
+  font-size: 10px;
+  margin: 0 2px;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 7px 7px 2px 0px;
+  letter-spacing: -0.5px;
+  box-sizing: border-box;
 }
-
-.seat.reserved {
-  background-color: red;
-  cursor: not-allowed;
+.handicap {
+  width: 21px;
+  height: 16px;
+  margin: 0 2px;
+  font-size: 10px;
+  background-color: black;
+  color: white;
+  border-radius: 7px 7px 2px 0px;
 }
-
-.seat.selected {
-  background-color: orange;
+.aisle {
+  width: 10px;
+  height: 16px;
+  margin: 0 2px;
+  background-color: #ffffff;
+  color: #ffffff;
 }
-
-.seat.aisle {
-  background-color: lightgray; /* 통로 색상 */
-  cursor: default; /* 통로는 클릭할 수 없도록 설정 */
+.blank {
+  width: 21px;
+  height: 16px;
+  margin: 0 2px;
+  background-color: #ffffff;
+  color: #ffffff;
+}
+.reserved {
+  background-color: #f44336;
 }
 </style>

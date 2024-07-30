@@ -19,7 +19,7 @@ const seatData1 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
@@ -64,7 +64,7 @@ const seatData1 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
@@ -109,7 +109,7 @@ const seatData1 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
@@ -154,7 +154,7 @@ const seatData1 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
@@ -199,7 +199,7 @@ const seatData1 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
@@ -244,7 +244,7 @@ const seatData1 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
@@ -289,22 +289,22 @@ const seatData1 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "/",
+                    "seat_number": 4,
                     "type": "handicap",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "/",
+                    "seat_number": 5,
                     "type": "handicap",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },

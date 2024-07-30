@@ -102,7 +102,7 @@
                 <div class="reservationPage1-showtime-view-linesGubun">{{movieGubun.linesGubun}}</div>
               </div>
               <ul class="reservationPage1-showtime-view-ul">
-                <li v-for="(showtime, index) in showTimeView(movieGubun.showGubun, movieGubun.linesGubun)" :key="index" @click="toggleCheckTime(index, showtime.showTime, showtime.movieTitle)" :class="{ 'clicked-Movie': clickedMovieIndex === index }">
+                <li v-for="(showtime, index) in showTimeView(movieGubun.showGubun, movieGubun.linesGubun)" :key="index" @click="toggleCheckTime(index, showtime)" :class="{ 'clicked-Movie': clickedMovieIndex === index }">
                   <div class="li-showTime">{{showtime.showTime}}</div>
                   <div class="li-showCount-wrap">
                     <div class="li-count-wrap">
@@ -127,6 +127,9 @@ import menuData from '@/assets/data/menu_data.js';
 import placeData from '@/assets/data/place_data.js';
 import placeMovieData from '@/assets/data/place_movie.js';
 import movieShowData from '@/assets/data/movie_show_data.js';
+import movieData from '@/assets/data/movie_data';
+import * as img from '@/assets/image/movie/index';
+import { mapMutations } from 'vuex';
 
 export default {
   name: 'reservationPage1',
@@ -136,6 +139,8 @@ export default {
       placeData,
       placeMovieData,
       movieShowData,
+      movieData,
+      img,
       clickedCinemaIndex: null,
       clickedPlaceIndex: null,
       clickedMovieIndex: null,
@@ -168,11 +173,7 @@ export default {
         .sort((a, b) => a.menuNo - b.menuNo)
     },
     placeView() {
-      console.log("placeView");
-
       const filteredMovies = this.placeData.filter(place => place.menuNo === this.clickedCinema);
-      // console.log("clickedCinema  placeView:", this.clickedCinema);
-      // console.log("filteredMovies  placeView:", filteredMovies);
       return filteredMovies
     },
     movieView() {
@@ -193,7 +194,6 @@ export default {
                                                        }));
       const uniqueMovies = Array.from(new Set(filteredMovies.map(show => JSON.stringify(show))))
                           .map(item => JSON.parse(item));     
-      console.log("uniqueMovies a:", uniqueMovies);
       return uniqueMovies
     },
     showGubunView() {
@@ -210,7 +210,6 @@ export default {
                                                        }));
       const uniqueMovies = Array.from(new Set(filteredMovies.map(show => JSON.stringify(show))))
                           .map(item => JSON.parse(item));     
-      console.log("uniqueMovies b:", uniqueMovies);
       return uniqueMovies
     },
   },
@@ -230,6 +229,7 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['setSelectedShowtime']), 
     toggleCheckCinema(index, menuNo) {
       this.clickedCinemaIndex = index;
       this.clickedPlaceIndex = null;
@@ -252,10 +252,11 @@ export default {
       this.clickedDay = showDay;
       this.changeDay = viewDay;
     },
-    toggleCheckTime(index, showTime, movieTitle) {
-      this.changeMovie = movieTitle;
+    toggleCheckTime(index, showTime) {
+      this.changeMovie = showTime.movieTitle;
       this.clickedTimeIndex = index;
-      this.clickedTime = showTime;
+      this.clickedTime = showTime.showTime;
+      this.setSelectedShowtime(showTime);
       this.$emit('toggle', 1);
     },
     ageColorObject(age) {

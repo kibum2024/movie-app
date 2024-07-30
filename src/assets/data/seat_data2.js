@@ -24,7 +24,7 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
@@ -94,12 +94,12 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
@@ -149,7 +149,7 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
@@ -219,12 +219,12 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
@@ -274,7 +274,7 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
@@ -309,47 +309,47 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "/",
+                    "seat_number": 14,
                     "type": "handicap",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "/",
+                    "seat_number": 15,
                     "type": "handicap",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "/",
+                    "seat_number": 16,
                     "type": "handicap",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "/",
+                    "seat_number": 17,
                     "type": "handicap",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
@@ -379,122 +379,122 @@ const seatData2 = {
             "row_number": "TR",
             "seats": [
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 }
@@ -524,102 +524,102 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 }
@@ -649,7 +649,7 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
@@ -724,27 +724,27 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 }
@@ -774,7 +774,7 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
@@ -849,27 +849,27 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 }
@@ -899,7 +899,7 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
@@ -974,27 +974,27 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 }
@@ -1024,7 +1024,7 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
@@ -1099,27 +1099,27 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 }
@@ -1149,7 +1149,7 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
@@ -1224,27 +1224,27 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 }
@@ -1274,7 +1274,7 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
@@ -1349,27 +1349,27 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 }
@@ -1399,7 +1399,7 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
@@ -1474,27 +1474,27 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 }
@@ -1524,7 +1524,7 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
@@ -1599,27 +1599,27 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 }
@@ -1649,7 +1649,7 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
@@ -1724,27 +1724,27 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 }
@@ -1774,7 +1774,7 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
@@ -1849,7 +1849,7 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
@@ -1899,7 +1899,7 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
@@ -1974,7 +1974,7 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
@@ -2024,7 +2024,7 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },
@@ -2094,12 +2094,12 @@ const seatData2 = {
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "BK",
+                    "seat_number": "",
                     "type": "blank",
                     "reserved": "false"
                 },
                 {
-                    "seat_number": "TR",
+                    "seat_number": "",
                     "type": "aisle",
                     "reserved": "false"
                 },

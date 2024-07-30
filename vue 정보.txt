@@ -262,6 +262,11 @@ my-spa-project/
 ├── package.json
 └── vue.config.js
 
+
+store 사용할때 설치
+
+npm install vuex@next
+
 =======================================================
 visual studio tab 값 설정
 

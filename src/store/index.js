@@ -1,16 +1,17 @@
+// store.js
 import { createStore } from 'vuex';
 
-export default createStore({
-  state: {
-    // 상태 값
+const store = createStore({
+  state() {
+    return {
+      selectedShowtime: null
+    };
   },
   mutations: {
-    // 동기적 상태 변경
-  },
-  actions: {
-    // 비동기적 상태 변경
-  },
-  modules: {
-    // 모듈화된 스토어
-  },
+    setSelectedShowtime(state, showtime) {
+      state.selectedShowtime = showtime;
+    }
+  }
 });
+
+export default store;

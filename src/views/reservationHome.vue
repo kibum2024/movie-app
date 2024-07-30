@@ -11,7 +11,7 @@
             </router-link>
           </li>
           <li class="reservation-home-side-li" :class="{ 'clicked-menu': clickedPageIndex === 1 }">
-            <router-link to="/reservationHome/reservationPage2" @click="setTab(1)" class="menu-link">
+            <router-link to="/reservationHome/reservationPage2" @click="setTab(1, selectedItem)" class="menu-link">
               <div><strong>02</strong></div>
               <div><strong>인원/좌석</strong></div>
             </router-link>
@@ -32,12 +32,14 @@
       </div>
       <div class="reservation-home-content">
         <router-view @toggle="changeTab"></router-view>
+        <!-- <router-view @toggle="setTab"></router-view> -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'reservationHome',
   data() {
@@ -49,7 +51,6 @@ export default {
   },
   computed: {
   },
-  // 컴포넌트가 mount할때 실행 : 초기값 설정시 여기에 구현
   mounted() {
     this.setTab(0);
     this.$router.push('/reservationHome/reservationPage1');

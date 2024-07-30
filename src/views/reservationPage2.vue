@@ -28,25 +28,25 @@
           <li>
             <div class="select-count-name">성인</div>
             <div class="select-count-wrap">
-              <div class="select-minus"><i class="bi bi-dash-lg"></i></div>
-              <div class="select-count">0</div>
-              <div class="select-plus"><i class="bi bi-plus-lg"></i></div>
+              <div class="select-minus" @click="grownUpDecrease"><i class="bi bi-dash-lg"></i></div>
+              <div class="select-count">{{grownUpCount}}</div>
+              <div class="select-plus" @click="grownUpIncrease"><i class="bi bi-plus-lg"></i></div>
             </div>
           </li>
           <li>
             <div class="select-count-name">경로</div>
             <div class="select-count-wrap">
-              <div class="select-minus"><i class="bi bi-dash-lg"></i></div>
-              <div class="select-count">0</div>
-              <div class="select-plus"><i class="bi bi-plus-lg"></i></div>
+              <div class="select-minus" @click="oldNameDecrease"><i class="bi bi-dash-lg"></i></div>
+              <div class="select-count">{{oldManCount}}</div>
+              <div class="select-plus" @click="oldNameIncrease"><i class="bi bi-plus-lg"></i></div>
             </div>
           </li>
           <li>
             <div class="select-count-name">장애인</div>
             <div class="select-count-wrap">
-              <div class="select-minus"><i class="bi bi-dash-lg"></i></div>
-              <div class="select-count">0</div>
-              <div class="select-plus"><i class="bi bi-plus-lg"></i></div>
+              <div class="select-minus" @click="handicapDecrease"><i class="bi bi-dash-lg"></i></div>
+              <div class="select-count">{{hanicapCount}}</div>
+              <div class="select-plus" @click="handicapIncrease"><i class="bi bi-plus-lg"></i></div>
             </div>
           </li>
         </ul>
@@ -64,7 +64,8 @@
           <div
             v-for="seat in row.seats"
             :key="seat.seat_number"
-            :class="[seat.type, { reserved: seat.reserved === 'true' }]"
+            :class="[seat.type, { 'reserved': seat.reserved === 'true', 'selected': seat.selected === 'true', 'no-select': maxSelectCount === selectedCount && seat.reserved === 'false' || seat.selected === 'true'}]"
+            @click="selectSeat(row.row_number, seat.seat_number)"
           >
             {{ seat.seat_number }}
           </div>
@@ -132,7 +133,12 @@ export default {
     return {
       seatData: seatData1,
       movieData,
-      img
+      img,
+      grownUpCount: 0,
+      oldManCount: 0,
+      hanicapCount: 0,
+      selectedCount: 0,
+      maxSelectCount: 0
     };
   },
   computed: {
@@ -176,7 +182,64 @@ export default {
         return { backgroundColor: 'rgb(222, 233, 14)' }; // 기본값
       }
     },
-  },
+    grownUpIncrease() {
+      if (this.grownUpCount < 8) {
+        this.grownUpCount += 1;
+        this.maxSelectCount += 1;
+      }
+    },
+    grownUpDecrease() {
+      if (this.grownUpCount > 0) {
+        this.grownUpCount -= 1;
+        this.maxSelectCount -= 1;
+      }
+    },
+    oldNameIncrease() {
+      if (this.oldManCount < 8) {
+        this.oldManCount += 1;
+        this.maxSelectCount += 1;
+      }
+    },
+    oldNameDecrease() {
+      if (this.oldManCount > 0) {
+        this.oldManCount -= 1;
+        this.maxSelectCount -= 1;
+      }
+    },
+    handicapIncrease() {
+      if (this.hanicapCount < 8) {
+        this.hanicapCount += 1;
+        this.maxSelectCount += 1;
+      }
+    },
+    handicapDecrease() {
+      if (this.hanicapCount > 0) {
+        this.hanicapCount -= 1;
+        this.maxSelectCount -= 1;
+      }
+    },
+    selectSeat(rowNumber, seatNumber) {
+      if (this.grownUpCount === 0 && this.oldManCount === 0  && this.hanicapCount === 0) {
+        alert("인원을 선택해 주십시오.");
+      } else if (this.maxSelectCount > this.selectedCount) { 
+                this.seatData.rows.forEach(row => {
+                  if (row.row_number === rowNumber) {
+                    row.seats.forEach(seat => {
+                      if (seat.seat_number === seatNumber) {
+                        if (seat.reserved === 'true') {
+                          seat.reserved = 'false';
+                          this.selectedCount -= 1;
+                        } else {
+                          seat.reserved = 'true';
+                          this.selectedCount += 1;
+                        }
+                      }
+                    });
+                  }
+                });
+      }
+    }
+  }
 };
 </script>
 
@@ -438,8 +501,7 @@ export default {
   background-color: white;
   color: black;
   border-radius: 7px 7px 2px 0px;
-  letter-spacing: -0.5px;
-  box-sizing: border-box;
+  cursor: pointer;
 }
 .handicap {
   width: 21px;
@@ -466,6 +528,18 @@ export default {
 }
 .reserved {
   background-color: #f44336;
+  border: 1px solid #f44336;
+  color: white;
+  cursor: pointer;
+}
+.selected {
+  background-color: green; /* 선택된 좌석 색상 */
+}
+.row-seat div.no-select {
+  background: #e8e8e8 url('@/assets/image/main/seat_no_select.png') no-repeat center center;
+  background-size: 28px 21px;
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 .summary-wrap {
   display: flex;

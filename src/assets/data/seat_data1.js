@@ -6,42 +6,50 @@ const seatData1 = {
                 {
                     "seat_number": "1",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "2",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "3",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "",
                     "type": "aisle",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "4",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "5",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "6",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "7",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 }
             ]
         },
@@ -51,42 +59,50 @@ const seatData1 = {
                 {
                     "seat_number": "1",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "2",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "3",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "",
                     "type": "aisle",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "4",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "5",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "6",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "7",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 }
             ]
         },
@@ -96,42 +112,50 @@ const seatData1 = {
                 {
                     "seat_number": "1",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "2",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "3",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "",
                     "type": "aisle",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "4",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "5",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "6",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "7",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 }
             ]
         },
@@ -141,42 +165,50 @@ const seatData1 = {
                 {
                     "seat_number": "1",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "2",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "3",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "",
                     "type": "aisle",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "4",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "5",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "6",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "7",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 }
             ]
         },
@@ -186,42 +218,50 @@ const seatData1 = {
                 {
                     "seat_number": "1",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "2",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "3",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "",
                     "type": "aisle",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "4",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "5",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "6",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "7",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 }
             ]
         },
@@ -231,42 +271,50 @@ const seatData1 = {
                 {
                     "seat_number": "1",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "2",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "3",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "",
                     "type": "aisle",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "4",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "5",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "6",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "7",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 }
             ]
         },
@@ -276,42 +324,50 @@ const seatData1 = {
                 {
                     "seat_number": "1",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "2",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "3",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "",
                     "type": "aisle",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": 4,
                     "type": "handicap",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": 5,
                     "type": "handicap",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "",
                     "type": "blank",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 },
                 {
                     "seat_number": "7",
                     "type": "seat",
-                    "reserved": "false"
+                    "reserved": "false",
+                    "selected": "false"
                 }
             ]
         },

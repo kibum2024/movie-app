@@ -51,6 +51,14 @@ export default {
   },
   computed: {
   },
+  watch: {
+    '$route'(to) {
+      if (to.path === '/reservationHome/reservationPage1' || to.path === '/reservationHome') {
+        this.setTab(0);
+        this.$router.push('/reservationHome/reservationPage1');
+      }
+    }
+  },
   mounted() {
     this.setTab(0);
     this.$router.push('/reservationHome/reservationPage1');

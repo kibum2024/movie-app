@@ -179,6 +179,15 @@ export default {
   },
   mounted() {
   },
+  beforeUnmount() {
+    this.seatData.rows.forEach(row => {
+      row.seats.forEach(seat => {
+        if (seat.reserved === 'true') {
+            seat.reserved = 'false';
+        }
+      });
+    });
+  },
   methods: {
     getImagePath(imageName) {
       return img[imageName];

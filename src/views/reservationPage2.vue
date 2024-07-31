@@ -33,6 +33,14 @@
               <div class="select-plus" @click="grownUpIncrease"><i class="bi bi-plus-lg"></i></div>
             </div>
           </li>
+          <li v-if="selectedShowtime.ageLimited !== '19'">
+            <div class="select-count-name">청소년</div>
+            <div class="select-count-wrap">
+              <div class="select-minus" @click="teenagerDecrease"><i class="bi bi-dash-lg"></i></div>
+              <div class="select-count">{{teenagerCount}}</div>
+              <div class="select-plus" @click="teenagerIncrease"><i class="bi bi-plus-lg"></i></div>
+            </div>
+          </li>
           <li>
             <div class="select-count-name">경로</div>
             <div class="select-count-wrap">
@@ -61,14 +69,17 @@
             <span v-if="row.row_number === 'TR'"></span>
             <span v-else>{{ row.row_number }}</span>
           </div>
-          <div
+          <div 
             v-for="seat in row.seats"
             :key="seat.seat_number"
-            :class="[seat.type, { 'reserved': seat.reserved === 'true', 'selected': seat.selected === 'true', 'no-select': maxSelectCount === selectedCount && seat.reserved === 'false' || seat.selected === 'true'}]"
-            @click="selectSeat(row.row_number, seat.seat_number)"
+            :class="[seat.type, { 'reserved': seat.reserved === 'true', 
+                                  'selected': seat.selected === 'true', 
+                                  'no-select': isNoSelect(seat) }]" 
+            @click="seatClick(row.row_number, seat.seat_number, seat)"
           >
             {{ seat.seat_number }}
           </div>
+            <!-- @click="!isNoSelect(seat) && selectSeat(row.row_number, seat.seat_number)" -->
         </div>
       </div> 
       <div class="seat-gubun-wrap">
@@ -112,7 +123,7 @@
     </div>
     <div class="summary-wrap">
       <div class="summary-total">
-        <div><span class="summary-total-name">총합계<span class="summary-amt">100,000</span>원</span></div>
+        <div><span class="summary-total-name">총합계<span class="summary-amt">{{totalAmt.toLocaleString()}}</span>원</span></div>
       </div>
       <div class="summary-paymeny">결제하기</div>
       <div class="summary-paymeny-lpay-wrap"><span class="summary-paymeny-lpay-title">L.PAY</span><span class="summary-paymeny-lpay">결제하기</span></div>
@@ -126,7 +137,6 @@ import { mapState } from 'vuex';
 import movieData from '@/assets/data/movie_data';
 import * as img from '@/assets/image/movie/index';
 
-
 export default {
   name: 'reservationPage2',
   data() {
@@ -135,10 +145,12 @@ export default {
       movieData,
       img,
       grownUpCount: 0,
+      teenagerCount: 0,
       oldManCount: 0,
       hanicapCount: 0,
       selectedCount: 0,
-      maxSelectCount: 0
+      maxSelectCount: 0,
+      totalAmt: 0
     };
   },
   computed: {
@@ -182,10 +194,26 @@ export default {
         return { backgroundColor: 'rgb(222, 233, 14)' }; // 기본값
       }
     },
+    maxCountCheck(gaeGubun) {
+      if (this.maxSelectCount > 8) {
+        if (gaeGubun === 'grownUp') {
+          this.grownUpCount -= 1;
+        } else if (gaeGubun === 'teenager') {
+          this.teenagerCount -= 1;
+        } else if (gaeGubun === 'oldMan') {
+          this.oldManCount -= 1;
+        } else if (gaeGubun === 'hanicap') {
+          this.hanicapCount -= 1;
+        } 
+        this.maxSelectCount -= 1;
+        alert("인원은 최대 8명까지 선택 가능합니다.");
+      }
+    },
     grownUpIncrease() {
       if (this.grownUpCount < 8) {
         this.grownUpCount += 1;
         this.maxSelectCount += 1;
+        this.maxCountCheck('grownUp');
       }
     },
     grownUpDecrease() {
@@ -194,10 +222,24 @@ export default {
         this.maxSelectCount -= 1;
       }
     },
+    teenagerIncrease() {
+      if (this.teenagerCount < 8) {
+        this.teenagerCount += 1;
+        this.maxSelectCount += 1;
+        this.maxCountCheck('teenager');
+      }
+    },
+    teenagerDecrease() {
+      if (this.teenagerCount > 0) {
+        this.teenagerCount -= 1;
+        this.maxSelectCount -= 1;
+      }
+    },
     oldNameIncrease() {
       if (this.oldManCount < 8) {
         this.oldManCount += 1;
         this.maxSelectCount += 1;
+        this.maxCountCheck('oldMan');
       }
     },
     oldNameDecrease() {
@@ -210,6 +252,7 @@ export default {
       if (this.hanicapCount < 8) {
         this.hanicapCount += 1;
         this.maxSelectCount += 1;
+        this.maxCountCheck('hanicap');
       }
     },
     handicapDecrease() {
@@ -218,26 +261,41 @@ export default {
         this.maxSelectCount -= 1;
       }
     },
-    selectSeat(rowNumber, seatNumber) {
-      if (this.grownUpCount === 0 && this.oldManCount === 0  && this.hanicapCount === 0) {
-        alert("인원을 선택해 주십시오.");
-      } else if (this.maxSelectCount > this.selectedCount) { 
-                this.seatData.rows.forEach(row => {
-                  if (row.row_number === rowNumber) {
-                    row.seats.forEach(seat => {
-                      if (seat.seat_number === seatNumber) {
-                        if (seat.reserved === 'true') {
-                          seat.reserved = 'false';
-                          this.selectedCount -= 1;
-                        } else {
-                          seat.reserved = 'true';
-                          this.selectedCount += 1;
-                        }
-                      }
-                    });
-                  }
-                });
+    isNoSelect(seat) {
+      return (this.maxSelectCount === this.selectedCount && seat.reserved === 'false' && this.maxSelectCount > 0 && seat.type !== 'aisle' && seat.type !== 'blank') || (seat.selected === 'true') || seat.type === 'handicap' && this.hanicapCount === 0;
+    },
+    seatClick(rowNumber, seatNumber, seat) {
+      if (this.isNoSelect(seat)) {
+        return; // 클릭 무시
       }
+      this.selectSeat(rowNumber, seatNumber);
+    },
+    selectSeat(rowNumber, seatNumber) {
+      if (this.grownUpCount === 0 && this.teenagerCount === 0  && this.oldManCount === 0  && this.hanicapCount === 0) {
+        alert("인원을 선택해 주십시오.");
+      } else { 
+              this.seatData.rows.forEach(row => {
+                if (row.row_number === rowNumber) {
+                  row.seats.forEach(seat => {
+                    if (seat.seat_number === seatNumber) {
+                      if (seat.reserved === 'true') {
+                        seat.reserved = 'false';
+                        this.selectedCount -= 1;
+                      } else {
+                        seat.reserved = 'true';
+                        this.selectedCount += 1;
+                      }
+                    }
+                  });
+                }
+              });
+              if (this.maxSelectCount === this.selectedCount) {
+                this.summaryAmt();
+              }
+      }
+    },
+    summaryAmt() {
+      this.totalAmt = (this.grownUpCount * 13000) + (this.teenagerCount  * 12000) + (this.oldManCount * 7000) + (this.hanicapCount * 5000);
     }
   }
 };
@@ -492,6 +550,9 @@ export default {
   text-align: center;
   color: white
 }
+.row-col-number {
+  display: flex;
+}
 .seat {
   width: 21px;
   height: 16px;
@@ -508,7 +569,7 @@ export default {
   height: 16px;
   margin: 0 2px;
   font-size: 10px;
-  background-color: rgb(85, 78, 78);
+  background-color: rgb(93, 187, 84);
   color: white;
   border-radius: 7px 7px 2px 0px;
 }
@@ -526,6 +587,14 @@ export default {
   background-color: black;
   color: black;
 }
+.no-select {
+  background-color: #03778b;
+  /* background: #e8e8e8 url('seat_no_select.png') no-repeat center center; */
+  background-size: 28px 21px;
+  opacity: 0.5;
+  font-size: 0px;
+  cursor: not-allowed;
+}
 .reserved {
   background-color: #f44336;
   border: 1px solid #f44336;
@@ -535,11 +604,10 @@ export default {
 .selected {
   background-color: green; /* 선택된 좌석 색상 */
 }
-.row-seat div.no-select {
-  background: #e8e8e8 url('@/assets/image/main/seat_no_select.png') no-repeat center center;
-  background-size: 28px 21px;
-  opacity: 0.5;
-  cursor: not-allowed;
+.selected.no-select {
+  background-color: #838885;
+  font-size: 10px;
+  color: white;
 }
 .summary-wrap {
   display: flex;

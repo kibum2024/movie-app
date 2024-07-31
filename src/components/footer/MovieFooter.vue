@@ -1,5 +1,11 @@
 <template>
   <div class="movie-footer-wrap">
+    <div class="movie-advertisement"><img :src="movieAvertisement" alt="movie advertisement"></div>
+    <div class="advertisement-footer">
+      <a href="https://nvapi.feeldmc.com:443/ad/p/in/v1_0/clk?slotid=stw_lottelotte_36&amp;adgroupid=adg_lottecinema_20230227_112&amp;adid=adi_lottecinema_20230227_136" target="_blank" title="새창열기">
+        <img :src="advertisementFooter" alt="advertisement Footer">
+      </a>
+    </div>
     <div class="movie-footer">
       <div class="movie-footer-img"><img :src="logoFooter" alt="logo Footer"></div>
       <div class="movie-footer-info">회사소개 | 이용약관 | 개인정보처리방침 | 이메일무단수집거부 | 고정형 영상정보처리기기 운영 및 관리방침 | L.POINT회원안내 | 배정기준 | 채용안내 | 광고/임대문의 | 사회적책임</div>
@@ -13,12 +19,16 @@
 
 <script>
 import logoFooter from '@/assets/image/footer/logo_footer.gif';
+import movieAvertisement from '@/assets/image/footer/Pilot_98018099.jpg';
+import advertisementFooter from '@/assets/image/footer/Samsungfire_9802402.png';
 
 export default {
   name: 'MovieFooter',
   data() {
     return {
-      logoFooter
+      logoFooter,
+      movieAvertisement,
+      advertisementFooter
     };
   },
   methods: {
@@ -32,6 +42,16 @@ export default {
   width: 100%;
   margin-top: 100px;
 } 
+.movie-advertisement {
+  width: 980px;
+  height: 180px;
+  margin: 50px auto;
+}
+.advertisement-footer {
+  width: 980px;
+  height: 240px;
+  margin: 50px auto;
+}
 .movie-footer {
   width: 980px;
   height: 200px;

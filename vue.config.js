@@ -4,6 +4,9 @@ module.exports = defineConfig({
   configureWebpack: {
     cache: false,
   },
+  publicPath: process.env.NODE_ENV === 'production'
+  ? '/REPOSITORY_NAME/'
+  : '/'
   // devServer: {
   //   watchOptions: {
   //     poll: true,

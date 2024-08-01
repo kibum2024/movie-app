@@ -1,6 +1,6 @@
 <template>
   <div class="main-menu-wrap">
-    <div class="main-menu-top">
+    <div class="main-menu-top" ref="mainMenuTop">
       <div class="main-menu-gnb">
         <ul class="main-menu1">
             <li><i class="bi bi-facebook"></i><a href="https://www.facebook.com/LotteCinema.kr" target="_blank" title="롯데시네마 페이스북 새창열림">페이스북</a></li>
@@ -18,38 +18,40 @@
         </ul>
       </div>  
     </div>
-    <div class="main-menu-bottom">
-      <ul class="main-dropdown-menu">
-        <li class="main-sub-menu" @mouseover="showSubMenu('reservationMenu')" @mouseleave="mouseleaveMenu">
-          <router-link to="/reservationHome" @click="mainMenuClick('reservationHome')">예매</router-link>
-        </li>
-        <li class="main-sub-menu" @mouseover="showSubMenu('MovieMenu')" @mouseleave="mouseleaveMenu">
-          <router-link to="/MovieHome" @click="mainMenuClick('MovieHome')">영화</router-link>
-        </li>
-        <li class="main-sub-menu" @mouseover="showSubMenu('cinemaMenu')" @mouseleave="mouseleaveMenu">
-          <router-link to="/cinemaHome" @click="mainMenuClick('cinemaHome')">영화관</router-link>
-        </li>
-        <li class="main-sub-menu" @mouseover="showSubMenu('eventMenu')" @mouseleave="mouseleaveMenu">
-          <router-link to="/eventHome" @click="mainMenuClick('eventHome')">이벤트</router-link>
-        </li>
-        <li class="main-sub-menu" @mouseover="showSubMenu('storeMenu')" @mouseleave="mouseleaveMenu">
-          <router-link to="/storeHome" @click="mainMenuClick('storeHome')">스토어</router-link>
-        </li>
-      </ul>
-      <ul class="main-menu3">
-        <li><router-link to="/">회원가입</router-link></li>
-        <li><router-link to="/">바로 예매</router-link></li>
-        <li><router-link to="/"><i class="bi bi-list"></i></router-link></li>
-      </ul>
+    <div class="main-menu-bottom" :class="{ sticky: isSticky }">
+      <div class="main-menu-bottom-inner">
+        <ul class="main-dropdown-menu">
+          <li class="main-sub-menu" @mouseover="showSubMenu('reservationMenu')" @mouseleave="mouseleaveMenu">
+            <router-link to="/reservationHome" @click="mainMenuClick('reservationHome')">예매</router-link>
+          </li>
+          <li class="main-sub-menu" @mouseover="showSubMenu('MovieMenu')" @mouseleave="mouseleaveMenu">
+            <router-link to="/MovieHome" @click="mainMenuClick('MovieHome')">영화</router-link>
+          </li>
+          <li class="main-sub-menu" @mouseover="showSubMenu('cinemaMenu')" @mouseleave="mouseleaveMenu">
+            <router-link to="/cinemaHome" @click="mainMenuClick('cinemaHome')">영화관</router-link>
+          </li>
+          <li class="main-sub-menu" @mouseover="showSubMenu('eventMenu')" @mouseleave="mouseleaveMenu">
+            <router-link to="/eventHome" @click="mainMenuClick('eventHome')">이벤트</router-link>
+          </li>
+          <li class="main-sub-menu" @mouseover="showSubMenu('storeMenu')" @mouseleave="mouseleaveMenu">
+            <router-link to="/storeHome" @click="mainMenuClick('storeHome')">스토어</router-link>
+          </li>
+        </ul>
+        <ul class="main-menu3">
+          <li><router-link to="/">회원가입</router-link></li>
+          <li><router-link to="/">바로 예매</router-link></li>
+          <li><router-link to="/"><i class="bi bi-list"></i></router-link></li>
+        </ul>
+      </div>  
+      <div v-if="activeMenu" class="main-submenu" @mouseover="keepSubMenu" @mouseleave="hideSubMenu">
+        <ul class="main-submenu-ul">
+          <li v-for="(submenu, index) in getActiveMenuItems" :key="index">
+            <router-link :to="getSubmenuRoute(submenu)" @click.stop="submenuClick(submenu)">{{ submenu.menuName }}</router-link>
+          </li>
+        </ul>
+      </div>
     </div>  
   </div>
-    <div v-if="activeMenu" class="main-submenu" @mouseover="keepSubMenu" @mouseleave="hideSubMenu">
-      <ul class="main-submenu-ul">
-        <li v-for="(submenu, index) in getActiveMenuItems" :key="index">
-          <router-link :to="getSubmenuRoute(submenu)" @click.stop="submenuClick(submenu)">{{ submenu.menuName }}</router-link>
-        </li>
-      </ul>
-    </div>
 
 </template>
 
@@ -65,8 +67,18 @@ export default {
       activeMenu: null,
       menuData,
       selectedSubmenu: null,
-      logColor: '1'
+      logColor: '1',
+      isSticky: false,
+      threshold: 0
     };
+  },
+  mounted() {
+    // this.threshold = this.$refs.mainMenuTop.clientHeight; 
+    this.threshold = 151; 
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
   },
   computed: {
     getActiveMenuItems() {
@@ -111,6 +123,9 @@ export default {
     },
     getSubmenuRoute(submenu) {
       return `${submenu.menuRouter}`;
+    },
+    handleScroll() {
+      this.isSticky = window.scrollY >= this.threshold;
     }
   },
 };
@@ -118,25 +133,22 @@ export default {
 
 <style scoped>
 .main-menu-wrap {
-  position: absolute;
-  width: 980px;
-  height: auto;
-  top: 80px;
-  left: 25%;
+  position: relative;
+  width: 100%;
   margin: 0 auto;
   z-index: 10;
 }
 .main-menu-top {
   width: 100%;
-  height: 71px;
-  border-bottom: 1px solid #aaa;
 }
 .main-menu-gnb {
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  height: 100%;
+  width: 980px;
+  height: 71px;
   align-items: flex-end;
+  margin: 0 auto;
+  border-bottom: 1px solid #aaa;
 }
 .main-logo-wrap {
   display: flex;
@@ -147,7 +159,6 @@ export default {
   cursor: pointer;
 }
 .main-logo {
-  /* color: white; */
   font-size: 30px;
   font-weight: bold;
 }
@@ -186,8 +197,33 @@ export default {
   cursor: pointer;
 }
 .main-menu-bottom {
-  position: relative;
   width: 100%;
+  transition: all 0.3s ease;
+}
+.main-menu-bottom.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  background-color: white;
+  color: black;
+}
+.main-menu-bottom.sticky .main-submenu {
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  top: 100%; /* 상단 메뉴 바로 아래에 위치 */
+  left: 0;
+  z-index: 20;
+  box-sizing: border-box;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+.main-menu-bottom-inner {
+  position: relative;
+  width: 980px;
   height: 40px;
   line-height: 40px;
   display: inline-flex;
@@ -260,7 +296,7 @@ export default {
   width: 100%; /* 상위 메뉴 항목의 너비를 기준으로 설정 */
   height: 30px;
   line-height: 30px;
-  top: 242%; /* 메뉴 항목 바로 아래에 서브메뉴 위치 */
+  top: 100%; /* 메뉴 항목 바로 아래에 서브메뉴 위치 */
   left: 0;
   z-index: 20; /* 다른 요소들 위에 표시되도록 설정 */
   box-sizing: border-box; /* 패딩과 테두리를 포함하여 계산 */

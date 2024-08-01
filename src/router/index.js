@@ -9,6 +9,8 @@ import reservationPage1 from '@/views/reservationPage1.vue'
 import reservationPage2 from '@/views/reservationPage2.vue'
 import reservationPage3 from '@/views/reservationPage3.vue'
 import reservationPage4 from '@/views/reservationPage4.vue'
+import EventHome from '@/views/EventHome.vue'
+import StoreHome from '@/views/StoreHome.vue'
 
 const routes = [
   { path: '/', component: MainHome },
@@ -22,6 +24,16 @@ const routes = [
     { path: 'reservationPage3', component: reservationPage3 },
     { path: 'reservationPage4', component: reservationPage4 },
   ]},
+  { path: '/EventHome', component: EventHome },
+  { path: '/EventHome/EventMovie', component: EventHome },
+  { path: '/EventHome/EventPreview', component: EventHome },
+  { path: '/EventHome/EventSale', component: EventHome },
+  { path: '/EventHome/EventMyMovie', component: EventHome },
+  { path: '/storeHome', component: StoreHome },
+  { path: '/storeHome/storeBest', component: StoreHome },
+  { path: '/storeHome/storeView', component: StoreHome },
+  { path: '/storeHome/storeSnack', component: StoreHome },
+  { path: '/storeHome/storePoto', component: StoreHome },
 ]
 
 const router = createRouter({

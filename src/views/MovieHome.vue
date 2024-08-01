@@ -120,7 +120,7 @@ export default {
 
 <style scoped>
 .movie-home-wrap {
-  margin-top: 111px;
+  margin-top: 800px;
 }
 .movie-home-play-sub-wrap {
   width: 100%;
@@ -158,9 +158,6 @@ export default {
   gap: 15px;
   margin: 0;
   padding: 0;
-}
-.movie-home-play-ul> li {
-  /* display: flex; */
 }
 .movie-home-play-ul> li> img {
   width: 184px;

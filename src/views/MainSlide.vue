@@ -92,8 +92,9 @@ export default {
 
 <style scoped>
 .main-slide-wrap {
-  position: relative;
+  position: absolute;
   width: 100vw;
+  top: 80px;
   margin: 0 auto;
   overflow: hidden;
 }

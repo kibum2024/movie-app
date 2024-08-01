@@ -15,7 +15,7 @@
           </div>
           <div class="movie-info2">
             <div class="movie-info-showDate">{{movieShowDate}}</div>
-            <div class="movie-info-showTime">{{selectedShowtime.showTime}}</div>
+            <div class="movie-info-showTime">{{selectedShowtime.showTime}} ~ {{showEndTime(selectedShowtime.showTime, movieShowImg[0].showTime)}}</div>
           </div>
           <div class="movie-info3">
             <div class="movie-info-showRoom">{{selectedShowtime.showRoom}}</div>
@@ -132,7 +132,9 @@
 </template>
 
 <script>
-import seatData1 from '@/assets/data/seat_data2'; 
+import seatData1 from '@/assets/data/seat_data1'; 
+import seatData2 from '@/assets/data/seat_data2'; 
+import seatData3 from '@/assets/data/seat_data3'; 
 import { mapState } from 'vuex';
 import movieData from '@/assets/data/movie_data';
 import * as img from '@/assets/image/movie/index';
@@ -141,7 +143,6 @@ export default {
   name: 'reservationPage2',
   data() {
     return {
-      seatData: seatData1,
       movieData,
       img,
       grownUpCount: 0,
@@ -155,6 +156,17 @@ export default {
   },
   computed: {
     ...mapState(['selectedShowtime']),
+    seatData() {
+      if (this.selectedShowtime.showRoom === "1관") {
+        return seatData1; 
+      } else if (this.selectedShowtime.showRoom === "2관") {
+        return seatData2; 
+      } else if (this.selectedShowtime.showRoom === "3관") {
+        return seatData3; 
+      } else {
+        return seatData2; 
+      } 
+    },
     movieShowDate() {
       if (this.selectedShowtime && this.selectedShowtime.showDay) {
         // YYYYMMDD 형식의 날짜를 YYYY-MM-DD로 변환
@@ -180,15 +192,19 @@ export default {
   mounted() {
   },
   beforeUnmount() {
-    this.seatData.rows.forEach(row => {
-      row.seats.forEach(seat => {
-        if (seat.reserved === 'true') {
-            seat.reserved = 'false';
-        }
-      });
-    });
+    this.seatInit();
   },
   methods: {
+    seatInit() {
+      this.selectedCount = 0;
+      this.seatData.rows.forEach(row => {
+        row.seats.forEach(seat => {
+          if (seat.reserved === 'true') {
+              seat.reserved = 'false';
+          }
+        });
+      });
+    },
     getImagePath(imageName) {
       return img[imageName];
     },
@@ -230,6 +246,9 @@ export default {
         this.grownUpCount -= 1;
         this.maxSelectCount -= 1;
       }
+      if (this.maxSelectCount === 0) {
+        this.seatInit();
+      }
     },
     teenagerIncrease() {
       if (this.teenagerCount < 8) {
@@ -242,6 +261,9 @@ export default {
       if (this.teenagerCount > 0) {
         this.teenagerCount -= 1;
         this.maxSelectCount -= 1;
+      }
+      if (this.maxSelectCount === 0) {
+        this.seatInit();
       }
     },
     oldNameIncrease() {
@@ -256,6 +278,9 @@ export default {
         this.oldManCount -= 1;
         this.maxSelectCount -= 1;
       }
+      if (this.maxSelectCount === 0) {
+        this.seatInit();
+      }
     },
     handicapIncrease() {
       if (this.hanicapCount < 8) {
@@ -268,6 +293,9 @@ export default {
       if (this.hanicapCount > 0) {
         this.hanicapCount -= 1;
         this.maxSelectCount -= 1;
+      }
+      if (this.maxSelectCount === 0) {
+        this.seatInit();
       }
     },
     isNoSelect(seat) {
@@ -305,6 +333,26 @@ export default {
     },
     summaryAmt() {
       this.totalAmt = (this.grownUpCount * 13000) + (this.teenagerCount  * 12000) + (this.oldManCount * 7000) + (this.hanicapCount * 5000);
+    },
+    showEndTime(startShowTime, ShowTime) {
+      let minutesToAdd = ShowTime.split("분").join('');
+      let [hours, minutes] = startShowTime.split(':').map(Number);
+
+      // 분을 더함
+      minutes += Number(minutesToAdd);
+
+      // 시와 분의 올림 계산
+      hours += Math.floor(minutes / 60);
+      minutes = minutes % 60;
+
+      // 24시간 형식으로 변환
+      hours = hours % 24;
+
+      // 두 자리 숫자로 변환
+      hours = String(hours).padStart(2, '0');
+      minutes = String(minutes).padStart(2, '0');
+
+      return `${hours}:${minutes}`;
     }
   }
 };

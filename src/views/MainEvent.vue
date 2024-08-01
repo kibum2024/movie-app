@@ -55,7 +55,7 @@ export default {
 <style scoped>
 .main-event-wrap {
   width: 100%;
-  margin-top: 100px;
+  margin-top: 800px;
 }
 .main-event-title {
   width: 991px;

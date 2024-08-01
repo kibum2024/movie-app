@@ -45,10 +45,17 @@
       </div>  
       <div v-if="activeMenu" class="main-submenu" @mouseover="keepSubMenu" @mouseleave="hideSubMenu">
         <ul class="main-submenu-ul">
-          <li v-for="(submenu, index) in getActiveMenuItems" :key="index">
+          <li v-for="(submenu, index) in getActiveMenuItems" :key="index" @mouseover="showSubMenuSub(submenu)" @mouseleave="mouseleaveMenu">
             <router-link :to="getSubmenuRoute(submenu)" @click.stop="submenuClick(submenu)">{{ submenu.menuName }}</router-link>
           </li>
         </ul>
+        <div v-if="activeMenuSub" class="main-submenu-sub" @mouseover="keepSubMenu" @mouseleave="hideSubMenuSub">
+          <ul class="main-submenu-sub-ul">
+            <li v-for="(submenuSub, index) in getActiveSubMenuItems" :key="index">
+              <router-link :to="getSubmenuRoute(submenuSub)" @click.stop="submenuClick(submenuSub)">{{ submenuSub.placeName }}</router-link>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>  
   </div>
@@ -65,6 +72,8 @@ export default {
     return {
       mainLog,
       activeMenu: null,
+      activeMenuSub: null,
+      activeMenuNo: null,
       menuData,
       selectedSubmenu: null,
       logColor: '1',
@@ -85,6 +94,18 @@ export default {
       // menuData가 존재하고 activeMenu가 올바르게 설정된 경우 서브메뉴 항목 반환
       return this.menuData && this.menuData[this.activeMenu] ? this.menuData[this.activeMenu] : [];
     },
+    getActiveSubMenuItems() {
+      // console.log("this.menuData[this.activeMenuSub] :", this.menuData[this.activeMenuSub]);
+      console.log("activeMenuSub aaaa :", this.activeMenuSub);
+      if (!this.activeMenuSub) {
+        return [];
+      }
+      if (!this.menuData[this.activeMenuSub]) {
+        return [];
+      }
+      const filteredMovies = this.menuData[this.activeMenuSub].filter(menu => menu.menuNo === this.activeMenuNo);
+      return filteredMovies
+    },
     logColorObject() {
       return {
         color: this.logColor === '1' ? 'white' : 'red'
@@ -97,9 +118,21 @@ export default {
     },
     hideSubMenu() {
       this.activeMenu = null;
+      this.activeMenuSub = null;
+      this.activeMenuNo = null;
     },
     keepSubMenu() {
       // 이 메서드는 서브메뉴가 유지되도록 빈 상태로 두거나 필요하면 로직을 추가
+    },
+    showSubMenuSub(menu) {
+      if (menu.menuNo.slice(0, 2) === '03') {
+        this.activeMenuSub = 'cinemaPlace';
+        this.activeMenuNo = menu.menuNo;
+      }      
+    },
+    hideSubMenuSub() {
+      this.activeMenuSub = null;
+      this.activeMenuNo = null;
     },
     submenuClick(submenu) {
       this.selectedSubmenu = submenu;
@@ -311,6 +344,32 @@ export default {
   padding: 0;
 }
 .main-submenu-ul> li {
+  color: #aaa;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0px 10px;
+}
+ .main-submenu-sub {
+  position: absolute; /* 상위 메뉴 항목에 상대적으로 위치 */
+  width: 100%; /* 상위 메뉴 항목의 너비를 기준으로 설정 */
+  height: auto;
+  top: 100%; /* 메뉴 항목 바로 아래에 서브메뉴 위치 */
+  left: 0;
+  z-index: 30; /* 다른 요소들 위에 표시되도록 설정 */
+  box-sizing: border-box; /* 패딩과 테두리를 포함하여 계산 */
+  background-color: rgb(61, 58, 58);
+  cursor: pointer;
+}
+.main-submenu-sub-ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 1000px;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+}
+.main-submenu-sub-ul> li {
   color: #aaa;
   font-size: 12px;
   font-weight: bold;

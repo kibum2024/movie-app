@@ -5,7 +5,7 @@ module.exports = defineConfig({
     cache: false,
   },
   publicPath: process.env.NODE_ENV === 'production'
-  ? '/REPOSITORY_NAME/'
+  ? '/movie-app/'
   : '/'
   // devServer: {
   //   watchOptions: {

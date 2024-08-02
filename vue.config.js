@@ -4,14 +4,6 @@ module.exports = defineConfig({
   configureWebpack: {
     cache: false,
   },
-  publicPath: process.env.NODE_ENV === 'production'
-  ? '/movie-app/'
-  : '/'
-  // devServer: {
-  //   watchOptions: {
-  //     poll: true,
-  //     ignored: /node_modules/,
-  //   },
-  // },
+  publicPath: process.env.NODE_ENV === 'production'  ? '/movie-app/'   : '/'
 })
 

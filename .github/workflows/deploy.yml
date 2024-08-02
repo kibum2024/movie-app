@@ -11,10 +11,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2  # 저장소를 체크아웃합니다.
+        uses: actions/checkout@v3  # 저장소를 체크아웃합니다.
 
       - name: Install Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '20'  # Node.js 20 버전 사용
 

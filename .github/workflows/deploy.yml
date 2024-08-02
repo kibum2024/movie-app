@@ -1,31 +1,29 @@
-name: Deploy Vue.js App to GitHub Pages
-
-on:
-  push:
-    branches:
-      - master  # 변경 사항이 master 브랜치에 푸시될 때마다 트리거됩니다.
-
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # GitHub Actions가 제공하는 Ubuntu 환경에서 실행됨
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3  # 저장소를 체크아웃합니다.
+    - name: Checkout source code
+      uses: actions/checkout@master
 
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'  # Node.js 20 버전 사용
+    - name: Set up Node.js
+      uses: actions/setup-node@master
+      with:
+        node-version: '20'
 
-      - name: Install dependencies
-        run: npm install  # 의존성을 설치합니다.
+    - name: Install dependencies
+      run: npm install
 
-      - name: Build
-        run: npm run build  # 프로젝트를 빌드합니다.
+    - name: Test unit
+      run: npm run test:unit 
+      
+    - name: Build Page
+      run: npm run build
+      env:
+          NODE_ENV: production
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3  # GitHub Pages로 배포하는 액션을 사용합니다.
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}  # GitHub 액세스 토큰
-          publish_dir: ./dist  # 배포할 디렉토리
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist

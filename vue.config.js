@@ -4,7 +4,7 @@ module.exports = defineConfig({
   configureWebpack: {
     cache: false,
   },
-  publicPath: process.env.NODE_ENV === 'production'  ? '/movie-app/'   : '/',
+  publicPath: '/movie-app/',
   outputDir: 'dist' 
 })
 

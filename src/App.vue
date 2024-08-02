@@ -21,7 +21,10 @@ export default {
   components: {
     MovieHeader,
     MovieFooter
-  }
+  },
+  mounted() {
+    this.$router.push('/');
+  },
 }
 </script>
 

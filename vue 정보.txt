@@ -268,6 +268,10 @@ store 사용할때 설치
 npm install vuex@next
 
 =======================================================
+npm install --save-dev gh-pages
+
+
+
 3. GitHub Actions 설정
 GitHub Actions를 사용하여 자동으로 배포할 수 있습니다. .github/workflows 디렉토리를 만들고 deploy.yml 파일을 생성합니다. Visual Studio에서 이를 설정합니다.
  .github/workflows  디렉토리 만들기

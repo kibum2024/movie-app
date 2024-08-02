@@ -61,7 +61,7 @@ export default {
         return { backgroundColor: 'green' };
       } else if (age === '19') {
         return { backgroundColor: 'red' };
-      } else if (age === '15') {
+      } else if (age === '14') {
         return { backgroundColor: 'orangered' };
       }
       return { backgroundColor: 'yellow' }; // 기본값

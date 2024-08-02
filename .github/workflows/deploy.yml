@@ -13,6 +13,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3  # 저장소를 체크아웃합니다.
 
+      - name: Clear git cache
+        run: git clean -fdx  # Git 캐시 비우기
+
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:

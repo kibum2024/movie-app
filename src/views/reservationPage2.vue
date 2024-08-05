@@ -2,6 +2,7 @@
   <div class="reservationPage2-wrap">
     <div class="reservationPage2-title">
       <h4>인원/좌석 선택</h4>
+      <label for="seat-gubun-check">좌석연속선택<input type="checkbox" name="seat-gubun-check" id="" v-model="seactGubunCheck"></label>
       <div class="person-count-note">· 인원은 최대 8명까지 선택 가능합니다.</div>
     </div>
     <div class="person-count-setect-wrap">
@@ -151,7 +152,8 @@ export default {
       hanicapCount: 0,
       selectedCount: 0,
       maxSelectCount: 0,
-      totalAmt: 0
+      totalAmt: 0,
+      seactGubunCheck: true
     };
   },
   computed: {
